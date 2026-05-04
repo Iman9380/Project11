@@ -39,3 +39,43 @@ char character(char start, int offset) {
 	
 	return newChar;
 }
+// MAIN FUNCTION  USE SEPARATE TRY/CATCH BLOCKS TO TEST DIFFERENT CASES
+// character('a', 1) character('a', -1) character('Z', -1) character('?', 5) character ('A', 32)
+int main() {
+	try {
+		std::cout << "character('a', 1): " << character('a', 1) << std::endl; // Should return 'b'
+	} catch (const invalidCharacterException&) {
+		std::cout << "Invalid character exception for character('a', 1)" << std::endl;
+	} catch (const invalidRangeException&) {
+		std::cout << "Invalid range exception for character('a', 1)" << std::endl;
+	}
+	try {
+		std::cout << "character('a', -1): " << character('a', -1) << std::endl; // Should throw invalidRangeException
+	} catch (const invalidCharacterException&) {
+		std::cout << "Invalid character exception for character('a', -1)" << std::endl;
+	} catch (const invalidRangeException&) {
+		std::cout << "Invalid range exception for character('a', -1)" << std::endl;
+	}
+	try {
+		std::cout << "character('Z', -1): " << character('Z', -1) << std::endl; // Should return 'Y'
+	} catch (const invalidCharacterException&) {
+		std::cout << "Invalid character exception for character('Z', -1)" << std::endl;
+	} catch (const invalidRangeException&) {
+		std::cout << "Invalid range exception for character('Z', -1)" << std::endl;
+	}
+	try {
+		std::cout << "character('?', 5): " << character('?', 5) << std::endl; // Should throw invalidCharacterException
+	} catch (const invalidCharacterException&) {
+		std::cout << "Invalid character exception for character('?', 5)" << std::endl;
+	} catch (const invalidRangeException&) {
+		std::cout << "Invalid range exception for character('?', 5)" << std::endl;
+	}
+	try {
+		std::cout << "character('A', 32): " << character('A', 32) << std::endl; // Should throw invalidRangeException
+	} catch (const invalidCharacterException&) {
+		std::cout << "Invalid character exception for character('A', 32)" << std::endl;
+	} catch (const invalidRangeException&) {
+		std::cout << "Invalid range exception for character('A', 32)" << std::endl;
+	}
+	return 0;
+}
